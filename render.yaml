@@ -1,0 +1,28 @@
+services:
+  - type: worker
+    name: autobay-reservations-bot
+    runtime: node
+    plan: starter
+    region: ohio
+    buildCommand: npm ci
+    startCommand: npm start
+    autoDeployTrigger: commit
+    envVars:
+      - key: NODE_VERSION
+        value: 20.19.0
+      - key: SLACK_BOT_TOKEN
+        sync: false
+      - key: SLACK_ADMIN_USER_ID
+        sync: false
+      - key: AUTOBAY_CALENDARS_JSON
+        sync: false
+      - key: GOOGLE_TIME_ZONE
+        value: America/Chicago
+      - key: GOOGLE_CLIENT_SECRET_JSON
+        sync: false
+      - key: GOOGLE_TOKEN_JSON
+        sync: false
+      - key: GOOGLE_SERVICE_ACCOUNT_JSON
+        sync: false
+      - key: GOOGLE_IMPERSONATED_USER
+        sync: false
